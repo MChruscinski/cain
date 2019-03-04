@@ -8,18 +8,18 @@
 #include "MultiperceptronNeuralNetwork.h"
 
 MultiperceptronNeuralNetwork::MultiperceptronNeuralNetwork(
-									std::vector<float> input,
+									Eigen::MatrixXf inputMatrix,
 									std::vector<short> hiddenLayersNeuronsNum,
-									short outputLength)
+									Eigen::MatrixXf outputMatrix)
 {
 	const short numberOfLayers = hiddenLayersNeuronsNum.size() + 2;
 
 	std::vector<short> layersNeuronsNum;
 	layersNeuronsNum.reserve(numberOfLayers);
-	layersNeuronsNum.push_back(input.size());
+	layersNeuronsNum.push_back(inputMatrix.rows());
 	layersNeuronsNum.insert(layersNeuronsNum.end(), hiddenLayersNeuronsNum.begin(),
 			hiddenLayersNeuronsNum.end());
-	layersNeuronsNum.push_back(outputLength);
+	layersNeuronsNum.push_back(outputMatrix.rows());
 
 	std::vector<Eigen::MatrixXf> weightsMatrices(numberOfLayers-1);
 	std::vector<Eigen::VectorXf> biasesVectors(numberOfLayers-1);

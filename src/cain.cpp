@@ -21,15 +21,16 @@ int main() {
 	// AND AN INTERFACE I GUESS OR WHATEVER
 	//const short inputLength = 4; // will eventually be determined automagically but whatever
 														       // ^ its toally a word frak you
-	std::vector<float> input{1,2,3,4};
+	const short datasetSize = 100;
+	auto inputMatrix = Eigen::MatrixXf::Random(4, datasetSize);
 	std::vector<short> hiddenLayersNeuronsNum{2,3};
-	const short outputLength = 1;
+	auto outputMatrix = Eigen::MatrixXf::Random(2, datasetSize);
 
 	// **************************************************************************
 
-	auto* model = new MultiperceptronNeuralNetwork(input,
+	auto* model = new MultiperceptronNeuralNetwork(inputMatrix,
 											hiddenLayersNeuronsNum,
-											outputLength);
+											outputMatrix);
 
 
 	for(auto weightsMatrix : model->getWeights())

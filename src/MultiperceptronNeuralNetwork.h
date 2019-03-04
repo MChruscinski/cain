@@ -13,9 +13,9 @@
 
 class MultiperceptronNeuralNetwork {
 public:
-	MultiperceptronNeuralNetwork(std::vector<float> input,
+	MultiperceptronNeuralNetwork(Eigen::MatrixXf inputMatrix,
 								 std::vector<short> hiddenLayersNeuronsNum,
-								 const short outputLength);
+								 Eigen::MatrixXf outputMatrix);
 	virtual ~MultiperceptronNeuralNetwork();
 
 	// Getter
